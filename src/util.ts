@@ -30,7 +30,7 @@ export function getConsentMessage(
     message: "Create a new account link to your identity." + "\n\n" + did,
   };
   if (addTimestamp) {
-    res.timestamp = Math.floor(new Date().getTime() / 1000);
+    res.timestamp = Math.floor(Date.now() / 1000);
     res.message += " \n" + "Timestamp: " + res.timestamp;
   }
   return res;

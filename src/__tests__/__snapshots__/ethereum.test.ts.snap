@@ -8,9 +8,9 @@ Object {
   "message": "Create a new account link to your identity.
 
 did:3:bafysdfwefwe 
-Timestamp: 1608100871",
-  "signature": "0xabd6ce7edb72d92421e6699ebe89893106431041b14b42d28793e054be2255a361b367656adcbc300c5a4145e96a6f0dccb480a60576cb2afd3a5c896dc506381c",
-  "timestamp": 1608100871,
+Timestamp: 0",
+  "signature": "0xe84fcb7b7aa7ca303e0db8008af549cddc55be485b0374a6ba260369ce2e753111c7b03f0a0cdf7c164bc99711ba012abb1d63447d6e168d121ffd3ca5e8d3441b",
+  "timestamp": 0,
   "type": "ethereum-eoa",
   "version": 2,
 }

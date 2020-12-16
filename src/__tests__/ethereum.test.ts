@@ -94,6 +94,11 @@ beforeAll(async () => {
       },
     };
   };
+  global.Date.now = jest.fn().mockImplementation(() => 666);
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
 });
 
 describe("isEthAddress", () => {

@@ -23,13 +23,10 @@ const CHAIN_NAMESPACE = "eip155";
 export class EthereumAuthProvider implements AuthProvider {
   readonly isAuthProvider = true;
 
-  private readonly provider: number;
-  private readonly address: string;
-
-  constructor(ethProvider: any, address: string) {
-    this.provider = ethProvider;
-    this.address = address;
-  }
+  constructor(
+    private readonly provider: any,
+    private readonly address: string
+  ) {}
 
   async accountId() {
     const payload = encodeRpcMessage("eth_chainId", []);
