@@ -24,7 +24,7 @@ export interface ConsentMessage {
 
 export function getConsentMessage(
   did: string,
-  addTimestamp: boolean
+  addTimestamp = true
 ): ConsentMessage {
   const res: any = {
     message: "Create a new account link to your identity." + "\n\n" + did,
