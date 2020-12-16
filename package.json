@@ -20,6 +20,7 @@
     "@polkadot/util": "^5.0.1",
     "@polkadot/util-crypto": "^5.0.1",
     "@polkadot/wasm-crypto": "^3.0.1",
+    "@smontero/eosio-local-provider": "^0.0.3",
     "@zondax/filecoin-signing-tools": "^0.13.0",
     "eth-sig-util": "^3.0.0",
     "ganache-core": "^2.13.1",
