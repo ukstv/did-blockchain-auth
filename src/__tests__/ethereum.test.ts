@@ -169,11 +169,15 @@ describe("EthereumAuthProvider", () => {
   test("authenticate", async () => {
     const address = addresses[0];
     const auth = new ethereum.EthereumAuthProvider(provider, address);
-    await expect(auth.authenticate("msg", address)).resolves.toMatchSnapshot();
+    await expect(
+      auth.withAddress(address).authenticate("msg")
+    ).resolves.toMatchSnapshot();
   });
   test("createLink", async () => {
     const address = addresses[0];
     const auth = new ethereum.EthereumAuthProvider(provider, address);
-    await expect(auth.createLink(testDid, address)).resolves.toMatchSnapshot();
+    await expect(
+      auth.withAddress(address).createLink(testDid)
+    ).resolves.toMatchSnapshot();
   });
 });

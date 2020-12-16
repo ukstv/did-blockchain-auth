@@ -4,11 +4,12 @@ import { AccountID } from "caip";
 /**
  *  AuthProvider defines the interface your custom authProvider must
  *  must implement. The properties network, id, name, image are all required.
- *  The authenticate function is required.
+ *
+ *  AuthProvider is expected to handle just one address.
+ *  One could use `#withAddress` to instantiate AuthProvider with another address.
  */
 export interface AuthProvider {
   readonly isAuthProvider: true;
-  readonly accountId: AccountID;
 
   /**
    *  (Required) Authenticate function consumes both a message (human readable string) and
@@ -30,10 +31,9 @@ export interface AuthProvider {
    *  please open an issue there, so we can add shared support for your network.
    *
    * @param message   A human readable string
-   * @param address   Id of account used with provider, most often hex address
    * @return          A 32-64 bytes hex string
    */
-  authenticate(message: string, address: string): Promise<string>;
+  authenticate(message: string): Promise<string>;
 
   /**
    *  (Required) createLink will publish a public verifiable link between account
@@ -44,8 +44,18 @@ export interface AuthProvider {
    *  verify and consume these links.
    *
    * @param did       A human readable string
-   * @param address   Id of account used with provider, most often hex address
    * @return          Returns on success
    */
-  createLink(did: string, address: string): Promise<LinkProof>;
+  createLink(did: string): Promise<LinkProof>;
+
+  /**
+   * Return currently used address as CAIP AccountID.
+   */
+  accountId(): Promise<AccountID>;
+
+  /**
+   * Instantiate a new AuthProvider using a new address.
+   * @param address
+   */
+  withAddress(address: string): AuthProvider;
 }

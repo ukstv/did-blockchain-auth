@@ -4,13 +4,13 @@ exports[`EthereumAuthProvider authenticate 1`] = `"0x92d414fa574ea420dae28a58454
 
 exports[`EthereumAuthProvider createLink 1`] = `
 Object {
-  "account": "0x8fe2c4516e920425e177658aaac451ca0463ed69@eip155:1",
+  "account": "0x8fe2c4516e920425e177658aaac451ca0463ed69@eip155:1337",
   "message": "Create a new account link to your identity.
 
 did:3:bafysdfwefwe 
-Timestamp: 1608053739",
-  "signature": "0xd5aa0942860a3a456a000a9792af0730b754d1c756eab3498c4149c955a44b0d2cdd5dda8b8814f51dbd9deecbba02950a66f9818beaaf0e8155676b8b4bffc31c",
-  "timestamp": 1608053739,
+Timestamp: 1608100871",
+  "signature": "0xabd6ce7edb72d92421e6699ebe89893106431041b14b42d28793e054be2255a361b367656adcbc300c5a4145e96a6f0dccb480a60576cb2afd3a5c896dc506381c",
+  "timestamp": 1608100871,
   "type": "ethereum-eoa",
   "version": 2,
 }

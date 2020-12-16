@@ -15,8 +15,7 @@ const ADDRESS_TYPES = {
   erc1271: "erc1271",
 };
 
-// TODO get network from provider
-const chainId = "eip155:1";
+const CHAIN_NAMESPACE = "eip155";
 
 /**
  *  AuthProvider which can be used for Ethereum providers with standard interface
@@ -26,26 +25,34 @@ export class EthereumAuthProvider implements AuthProvider {
 
   private readonly provider: number;
   private readonly address: string;
-  readonly accountId: AccountID;
 
   constructor(ethProvider: any, address: string) {
     this.provider = ethProvider;
     this.address = address;
-    this.accountId = this._toAccountId(address);
   }
 
-  private _toAccountId(address: string) {
-    return new AccountID({ address, chainId });
+  async accountId() {
+    const payload = encodeRpcMessage("eth_chainId", []);
+    const chainIdHex = await safeSend(payload, this.provider);
+    const chainId = parseInt(chainIdHex, 16);
+    return new AccountID({
+      address: this.address,
+      chainId: `${CHAIN_NAMESPACE}:${chainId}`,
+    });
   }
 
-  async authenticate(message: string, address: string): Promise<string> {
-    const accountId = address ? this._toAccountId(address) : this.accountId;
+  async authenticate(message: string): Promise<string> {
+    const accountId = await this.accountId();
     return authenticate(message, accountId, this.provider);
   }
 
-  async createLink(did: string, address: string): Promise<LinkProof> {
-    const accountId = address ? this._toAccountId(address) : this.accountId;
+  async createLink(did: string): Promise<LinkProof> {
+    const accountId = await this.accountId();
     return createLink(did, accountId, this.provider, { type: "ethereum-eoa" });
+  }
+
+  withAddress(address: string): AuthProvider {
+    return new EthereumAuthProvider(this.provider, address);
   }
 }
 
