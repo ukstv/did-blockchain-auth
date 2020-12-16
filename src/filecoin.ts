@@ -40,7 +40,7 @@ export class FilecoinAuthProvider implements AuthProvider {
   }
 
   withAddress(address: string): AuthProvider {
-    throw new Error(`Not Implemented`);
+    return new FilecoinAuthProvider(this.provider, address);
   }
 }
 

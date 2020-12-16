@@ -146,3 +146,14 @@ describe("createLink", () => {
     await expect(authProvider.createLink(did)).rejects.toThrow();
   });
 });
+
+test("withAddress", async () => {
+  const addresses = await testnetProvider.getAccounts();
+  const authProvider = new FilecoinAuthProvider(mainnetProvider, addresses[0]);
+  const currentAccount = await authProvider.accountId();
+  expect(currentAccount).toMatchSnapshot();
+  const nextProvider = authProvider.withAddress("f123");
+  const nextAccount = await nextProvider.accountId();
+  expect(nextAccount).toMatchSnapshot();
+  expect(nextAccount).not.toEqual(currentAccount);
+});

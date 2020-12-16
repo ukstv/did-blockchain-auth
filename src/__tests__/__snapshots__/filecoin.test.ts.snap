@@ -77,3 +77,23 @@ Timestamp: 0",
   "version": 2,
 }
 `;
+
+exports[`withAddress 1`] = `
+AccountID {
+  "address": "t17lxg2i2otnl7mmpw2ocd6o4e3b4un3272vny6ka",
+  "chainId": ChainID {
+    "namespace": "fil",
+    "reference": "t",
+  },
+}
+`;
+
+exports[`withAddress 2`] = `
+AccountID {
+  "address": "f123",
+  "chainId": ChainID {
+    "namespace": "fil",
+    "reference": "f",
+  },
+}
+`;
