@@ -4,7 +4,6 @@
   "description": "Link blockchain account to DID",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc --project .",
     "test": "jest"
